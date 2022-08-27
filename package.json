@@ -15,7 +15,7 @@
     "htw",
     "fiw"
   ],
-  "author": "J. freiheit",
+  "author": "E. Aydin",
   "license": "ISC",
   "devDependencies": {
     "http-server": "^14.1.0"
