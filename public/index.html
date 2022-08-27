@@ -24,9 +24,12 @@
         <!-- Add spacer, to align navigation to the right -->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation. We hide it in small screens. -->
+        <button id="install"  style="display:none;" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+          Installieren
+        </button>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
           <a class="mdl-navigation__link" href="/">Bücher</a>
-          <a class="mdl-navigation__link" href="/contacts">Über uns</a>
+          <a class="mdl-navigation__link" href="contacts">Über uns</a>
           <div class="drawer-option">
             <button class="enable-notifications mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--accent">
               Benachrichtigungen Ein
@@ -37,16 +40,19 @@
     </header>
     <div class="mdl-layout__drawer">
       <span class="mdl-layout-title">IKT-PWA</span>
+      <!--Navbar--->
       <nav class="mdl-navigation">
         <a class="mdl-navigation__link" href="/">Bücher</a>
-        <a class="mdl-navigation__link" href="/contacts">Über uns</a>
+        <a class="mdl-navigation__link" href="contacts">Über uns</a>
         <div class="drawer-option">
           <button class="enable-notifications mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--accent">
             Benachrichtigungen Ein
           </button>
         </div>
+
       </nav>
     </div>
+    <!---Modal für hinzufügen eines neuen Buches--->
     <main class="mdl-layout__content mat-typography">
       <div id="create-post">
         <form>
@@ -64,25 +70,30 @@
           </div>
           <br>
           <div>
+            <!--Javascript Funktion wird aufgerufen, um dann die Crad zu erstellen, dann wird sie bei shared moments sichtbar--->
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--accent"
                     type="submit" id="post-btn">Speichern
             </button>
           </div>
           <br>
           <div>
+            <!--JS funktion wird hier dann abrechen, passiert nicht-->
             <button class="mdl-button mdl-js-button mdl-button--fab" id="close-create-post-modal-btn" type="button">
               <i class="material-icons">close</i>
             </button>
           </div>
         </form>
       </div>
+
 <!--      <img src="src/images/htw.jpg"-->
 <!--           alt="HTW Wilhelminenhof"-->
 <!--           class="main-image">-->
       <div class="page-content">
-        <h5 class="text-center mdl-color-text--primary">Empfehlungen</h5>
+        <h5 class="text-center mdl-color-text--primary">Bücher</h5>
+        <!--Div für die erstellten Boxen, werden hier angeziegt--->
         <div id="shared-moments"></div>
       </div>
+
       <div class="floating-button">
         <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"
                 id="share-image-button">
@@ -93,9 +104,7 @@
         <div class="mdl-snackbar__text"></div>
         <button type="button" class="mdl-snackbar__action"></button>
       </div>
-      <button id="install" style="display:none;" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
-        Installieren
-      </button>
+
     </main>
   </div>
 </div>

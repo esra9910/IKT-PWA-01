@@ -15,17 +15,36 @@
 // Bevor wir uns mit der MongoDB verbinden, erstellen wir zunächst noch eine Datenbank.
 //erstellen eine .env-File zur Connection und fügen das hier in dei server.js rein und verwednen  das .env Package npm install dotenv --save
 
+//npm install multer multer-gridfs-storage gridfs-stream installiere multer
+//Multer = nodejs Middleware https://www.npmjs.com/package/multer
 
 const express = require('express');
-const routes = require('./routes');
-//const mongoose=  require('dotenv').config();//connection der .env bzw. Mongodb
-const mongoose = require('mongoose');
+
+//Die Same Origin Policy (SOP) ist ein Sicherheitskonzept, das clientseitig Skriptsprachen (also z.B. JavaScript oder CSS)
+// untersagt, Ressourcen aus verschiedenen Herkunften zu verwenden, also von verschiedenen Servern.
+// Dadurch soll verhindert werden, dass fremde Skripte in die bestehende Client-Server-Kommunikation eingeschleust werden.
+// Gleiche Herkunft (origin) bedeutet, dass das gleiche Protokoll (z.B. http oder https),
+// von der gleichen Domain (z.B. localhost oder htw-berlin) sowie dem gleichen Port (z.B. 80 oder 4200) verwendet werden.
+//Installation mit npm install cors
+//INFOS zur Cors:https://expressjs.com/en/resources/middleware/cors.html
+
+const cors = require('cors');
+//Importieren den Router für Bilder Speicherung und POSTs
+const postsRoutes = require('../routes/posts.routes');
+const uploadRoutes = require('../routes/upload.routes');
+const mongoose = require('mongoose');//connection zur DB
 require('dotenv').config();//connection der .env bzw. Mongodb
+
 const app = express();
 const PORT = 3000;
 
+
 app.use(express.json());
-app.use('/', routes);
+// enable cors for all requests
+app.use(cors());
+app.use('/posts', postsRoutes);//Routes importieren
+app.use('/img', uploadRoutes);
+
 
 app.listen(PORT, (error) => {
     if (error) {

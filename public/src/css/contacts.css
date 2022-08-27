@@ -1,4 +1,14 @@
 .mdl-button {
   margin: 10px;
 }
+main {
+  background-image: url("https://pbs.twimg.com/media/E2_VBqZWEAQAmGL.jpg");
+  color: #fcf2f1;
+  background-size: 450px;
+
+}
+.mdl-grid{
+  text-align: center;
+}
+
 

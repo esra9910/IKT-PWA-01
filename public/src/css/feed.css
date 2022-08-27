@@ -6,7 +6,7 @@
   overflow-y: scroll;
   bottom: 0;
   top: 56px;
-  background: white;
+  background: #ffff;
   text-align: center;
   display: none;
 }
@@ -28,4 +28,11 @@
 .input-section {
   display: block;
   margin: 10px auto;
+
+}
+.shared-moment-card.mdl-card {/*design der Karte*/
+  margin: 20px ;/*margin:15px auto;*/
+  height: 280px;
+  width: 270px;
+  float: left;/*damit es in einer zeile steht*/
 }
