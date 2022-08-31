@@ -1,3 +1,7 @@
+/*
+Karte wenn die erstellt wird
+ */
+
 let shareImageButton = document.querySelector('#share-image-button');//Button vom index.html auslöser
 let createPostArea = document.querySelector('#create-post');//ganze Inputfelder-Div
 let closeCreatePostModalButton = document.querySelector('#close-create-post-modal-btn');//close Button X
@@ -17,24 +21,28 @@ shareImageButton.addEventListener('click', openCreatePostModal);//eventlistener 
 
 closeCreatePostModalButton.addEventListener('click', closeCreatePostModal);//bei Click und Funktionsaufruf
 
-function createCard() {//Funktion Karte wird erstellt
+function createCard() {
   let cardWrapper = document.createElement('div');
   cardWrapper.className = 'shared-moment-card mdl-card mdl-shadow--2dp';
   let cardTitle = document.createElement('div');
   cardTitle.className = 'mdl-card__title';
-  cardTitle.style.backgroundImage = 'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrMGaVj-qlIKbby1MXV7z4bos7J3YAgI6NLQ&usqp=CAU")';
+  cardTitle.style.backgroundImage = 'url("/src/images/htw-gebaeude-h.jpg")';
   cardTitle.style.backgroundSize = 'cover';
-  cardTitle.style.height = '370px';
+  cardTitle.style.height = '180px';
   cardWrapper.appendChild(cardTitle);
+  let cardTitleTextElement = document.createElement('h2');
+  cardTitleTextElement.className = 'mdl-card__title-text';
+  cardTitleTextElement.textContent = 'Vor der HTW-Mensa';
+  cardTitle.appendChild(cardTitleTextElement);
   let cardSupportingText = document.createElement('div');
   cardSupportingText.className = 'mdl-card__supporting-text';
-  cardSupportingText.textContent = 'From A to Z';
+  cardSupportingText.textContent = 'HTW Berlin';
   cardSupportingText.style.textAlign = 'center';
   cardWrapper.appendChild(cardSupportingText);
   componentHandler.upgradeElement(cardWrapper);
   sharedMomentsArea.appendChild(cardWrapper);
 }
-//Fetch-Funktion
+
 fetch('https://httpbin.org/get')
     .then(function(res) {
       return res.json();
