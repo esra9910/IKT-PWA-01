@@ -2,6 +2,7 @@
 
 //id Install holen und in Variable  speichern
 //Button ist auf display:none dann wird es
+
 const installButton = document.getElementById('install');
 console.log('installButton', installButton)
 let deferredPrompt;
