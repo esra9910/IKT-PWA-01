@@ -3,7 +3,7 @@
 
 //erstellen Variable um express zu initilaisieren
 
-//Starte backend mit ------>>>> node server.js
+//Starte backend mit ------>>>> node server.js oder npm run watch
 //Models ordner ist posts.js
 
 //Nodemon Package wurde mit npm install --save-dev
@@ -18,7 +18,6 @@
 //npm install multer multer-gridfs-storage gridfs-stream installiere multer
 //Multer = nodejs Middleware https://www.npmjs.com/package/multer
 
-const express = require('express');
 
 //Die Same Origin Policy (SOP) ist ein Sicherheitskonzept, das clientseitig Skriptsprachen (also z.B. JavaScript oder CSS)
 // untersagt, Ressourcen aus verschiedenen Herkunften zu verwenden, also von verschiedenen Servern.
@@ -28,23 +27,27 @@ const express = require('express');
 //Installation mit npm install cors
 //INFOS zur Cors:https://expressjs.com/en/resources/middleware/cors.html
 
+const express = require('express');
 const cors = require('cors');
-//Importieren den Router für Bilder Speicherung und POSTs
-const postsRoutes = require('../routes/posts.routes');
-const uploadRoutes = require('../routes/upload.routes');
-const mongoose = require('mongoose');//connection zur DB
-require('dotenv').config();//connection der .env bzw. Mongodb
+const postsRoutes = require('./routes/posts.routes');
+const uploadRoutes = require('./routes/upload.routes');
+const downloadRoute = require('./routes/downloads.routes');
+const deleteRoute = require('./routes/delete.routes');
+
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
 const PORT = 3000;
 
-
 app.use(express.json());
-// enable cors for all requests
 app.use(cors());
-app.use('/posts', postsRoutes);//Routes importieren
-app.use('/img', uploadRoutes);
 
+//Routen
+app.use('/posts', postsRoutes);
+app.use('/image', uploadRoutes);
+app.use('/download', downloadRoute);
+app.use('/delete', deleteRoute);
 
 app.listen(PORT, (error) => {
     if (error) {
@@ -54,9 +57,18 @@ app.listen(PORT, (error) => {
     }
 });
 
+
+// app.listen(process.env.PORT, (error) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(`server running on http://localhost:${process.env.PORT}`);
+//     }
+// });
+
 // connect to mongoDB
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
+mongoose.connect (process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection();
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
     console.log('connected to DB');

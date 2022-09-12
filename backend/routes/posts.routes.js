@@ -26,6 +26,7 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/posts');
+
 // GET all posts
 router.get('/', async(req, res) => {
     const allPosts = await Post.find();
@@ -97,3 +98,4 @@ router.delete('/:id', async(req, res) => {
         res.send({ error: "Post does not exist!" })
     }
 });
+module.exports = router ;//Export hinzufügen

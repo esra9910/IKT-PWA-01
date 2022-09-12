@@ -5,6 +5,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+//Mongo DB schema bzw. Tabelle und die ganzen Spalten
 //Schema /Spalten
 const schema = new mongoose.Schema({
     title: String,
@@ -31,3 +32,4 @@ router.post('/posts', async(req, res) => {
 //Weitere Hilfe:
 //https://mongoosejs.com/docs/models.html
 //https://mongoosejs.com/docs/guide.html
+//https://mongoosejs.com/docs/index.html
