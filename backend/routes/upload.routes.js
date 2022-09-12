@@ -5,27 +5,24 @@
 *
 *
  */
-const multer = require("multer");
-const {
-    GridFsStorage
-} = require("multer-gridfs-storage");
+const express = require('express');
+const upload = require('../middleware/upload');
+const router = express.Router();
 
-const storage = new GridFsStorage({
-    url: process.env.DB,
-    options: { useNewUrlParser: true, useUnifiedTopology: true },
-    file: (req, file) => {
-        const match = ["image/png", "image/jpeg"];
+router.post('/', upload.single('file'), (req, res) => {
+    // req.file is the `file` file
+    if (req.file === undefined) {
 
-        if (match.indexOf(file.mimetype) === -1) {
-            console.log('file.mimetype === -1')
-            return `${Date.now()}-jf-${file.originalname}`;
-        }
-        console.log('store');
-        return {
-            bucketName: 'posts',
-            filename: `${Date.now()}-jf-${file.originalname}`,
-        };
-    },
-});
+        return res.send({
+            "message": "no file selected"
+        });
+    } else {
+        console.log('req.file', req.file);
+        const imgUrl = `http://localhost:4000/download/${req.file.filename}`;
+        return res.status(201).send({
+            url: imgUrl
+        });
+    }
+})
 
-module.exports = multer({ storage });
+module.exports = router;

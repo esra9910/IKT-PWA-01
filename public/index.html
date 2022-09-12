@@ -6,12 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>MyBookBlog</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-red.min.css">
   <link rel="stylesheet" href="src/css/app.css">
   <link rel="stylesheet" href="src/css/feed.css">
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!--MDL--->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <!--<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />-->
 </head>
 <body>
 
@@ -49,7 +50,6 @@
             Benachrichtigungen Ein
           </button>
         </div>
-
       </nav>
     </div>
     <!---Modal für hinzufügen eines neuen Buches--->
@@ -85,25 +85,15 @@
         </form>
       </div>
       <div class="page-content">
-        <h5 class="text-center mdl-color-text--primary">Bücher</h5>
-        <button class="mdl-button">Button</button>
-
-
+        <h5 class="text-center mdl-color-text--primary">kjhjhjhdjnd</h5>
+        <!-- Accent-colored flat button -->
+        <div class="floating-button">
+          <!-- Accent-colored raised button with ripple -->
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="share-image-button">Bücher hinzufügen</button>
+        </div>
         <!--Div für die erstellten Boxen, werden hier angeziegt--->
-        <div class="shared-moment-card mdl-card mdl-shadow--2dp"></div>
+          <div id="shared-moments"></div>
       </div>
-
-      <div class="floating-button">
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"
-                id="share-image-button">
-          <i class="material-icons">add</i>
-        </button>
-      </div>
-      <div id="confirmation-toast" aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
-        <div class="mdl-snackbar__text"></div>
-        <button type="button" class="mdl-snackbar__action"></button>
-      </div>
-
     </main>
   </div>
 </div>

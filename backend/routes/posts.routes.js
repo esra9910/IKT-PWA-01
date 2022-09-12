@@ -11,9 +11,6 @@
 //DAtei war routes.js ---> posts.routes.js
 //Änderung im Server.js Datei
 
-const express = require('express');
-const router = express.Router();
-const Post = require('../models/posts');
 
 // eine GET-Anfrage
 //router.get('/', async(req, res) => {
@@ -26,6 +23,9 @@ const Post = require('../models/posts');
 //Wir nutzen den express.Router,
 // um die Routen zu definieren und können mithilfe des Mongoose-Models auf die MongoDB zugreifen.
 
+const express = require('express');
+const router = express.Router();
+const Post = require('../models/posts');
 // GET all posts
 router.get('/', async(req, res) => {
     const allPosts = await Post.find();
@@ -68,7 +68,7 @@ router.patch('/:id', async(req, res) => {
             post.title = req.body.title
         }
         if (req.body.content) {
-            post.location = req.body.content
+            post.content = req.body.content
         }
 
         if (req.body.location) {
