@@ -38,7 +38,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());
@@ -56,20 +56,12 @@ app.listen(PORT, (error) => {
         console.log(`server running on http://localhost:${PORT}`);
     }
 });
+/* die folgende Verbindung brauchen wir gar nicht, wird jeweils bei Bedarf erzeugt (mongoose) */
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(
+        () => console.log('connected to BD')
+    ).catch(
+    err => console.error(err, 'conncetion error')
+)
 
-
-// app.listen(process.env.PORT, (error) => {
-//     if (error) {
-//         console.log(error);
-//     } else {
-//         console.log(`server running on http://localhost:${process.env.PORT}`);
-//     }
-// });
-
-// connect to mongoDB
-mongoose.connect (process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection();
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-    console.log('connected to DB');
-});
+const db = mongoose.connection;
