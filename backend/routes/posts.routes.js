@@ -56,30 +56,29 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/posts');//unsere posts wo
 const upload = require('../middleware/upload');// für unseren Upload
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 /* ----------------- POST ---------------------------- */
 
 /// POST one post
-// POST one post
 router.post('/', upload.single('file'), async(req, res) => {
     // req.file is the `file` file
-    if (req.file === undefined) {//Fehlermeldung
+    if (req.file === undefined) {
         return res.send({
             "message": "no file selected"
         });
     } else {
-        const newPost = new Post({//erstellt neues Schema
-        title: req.body.title,
-        content: req.body.content,
-        location: req.body.location,
-        image_id: req.body.image_id
+        console.log('req.body', req.body);
+        const newPost = new Post({
+            title: req.body.title,
+            content: req.body.content,
+            location: req.body.location,
+            image_id: req.file.filename
         })
-            console.log('newPost', newPost)
-            await newPost.save();
-            res.send(newPost)
-        }
-    })
+        await newPost.save();
+        return res.send(newPost);
+    }
+})
 // GET all posts
 router.get('/', async(req, res) => {
 
@@ -96,8 +95,8 @@ router.get('/', async(req, res) => {
 });
 /* ----------------- GET ---------------------------- */
 const connect = mongoose.createConnection(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true });
-const collectionFiles = connect.collection('posts.files');
-const collectionChunks = connect.collection('posts.chunks');
+const collectionFiles = connect.collection('posts.files');//geändert
+const collectionChunks = connect.collection('posts.chunks');//geändert
 
 
 // GET all posts
@@ -164,6 +163,7 @@ function getOnePost(id) {
                     let getPost = new Post({
                         "title": post.title,
                         "location": post.location,
+                        "content": post.content,
                         "image_id": base64file
                     });
                     //console.log('getPost', getPost)

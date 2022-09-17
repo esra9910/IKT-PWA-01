@@ -6,9 +6,10 @@
   overflow-y: scroll;
   bottom: 0;
   top: 56px;
-  background: #ffff;
+  background: whitesmoke;
   text-align: center;
   display: none;
+  /*background-image: url("https://wallpaperaccess.com/full/3637360.jpg");*/
 }
 
 .main-image {
@@ -16,6 +17,7 @@
   margin: auto;
   display: block;
 }
+
 
 .floating-button {
   /*z-index: 1000;*/
@@ -35,5 +37,5 @@
 
 .shared-moment-card.mdl-card {
   margin: 70px auto;
-  float: left;
+  /*float: left;*/
 }
