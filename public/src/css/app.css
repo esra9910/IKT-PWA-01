@@ -8,6 +8,7 @@
 #install{
   /*background-color: rgb(146, 210, 210);*/
   border-radius: 20px;
+  background-color: darkorange;
 
 }
 
@@ -15,5 +16,24 @@ main {
   background-image: url("https://wallpaperaccess.com/full/3637360.jpg");
   position: absolute;
 }
+/*Neu hinzugefügt*/
+/*#navheader{
+  /*position: fixed;
+  margin-bottom: 2cm;
+}
+/*.page-content{
+    margin-top: 2cm;
+}
 
-/*Bis hier ist funktioniert alles*/
+
+!*Bis hier ist funktioniert alles*!
+
+!*Media Querys hinzufügen für App und Tablett Ansicht*!
+@media (max-width: 480px) and (min-width: 320px){
+    .main{
+        background-color: darkblue;
+    }
+
+}
+
+*/

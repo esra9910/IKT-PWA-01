@@ -53,13 +53,13 @@ workbox.routing.registerRoute(
     new workbox.strategies.NetworkFirst()     // NetworkFirst() vs CacheFirst()
 )
  */
-
+importScripts('/src/js/idb.js');//Importieren es laden somit dies in den Cache
+importScripts('/src/js/db.js');
 //CAche
 const CACHE_VERSION = 4;
 const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
 const CURRENT_DYNAMIC_CACHE = 'dynamic-v'+CACHE_VERSION;
-importScripts('/src/js/idb.js');//Importieren es laden somit dies in den Cache
-importScripts('/src/js/db.js');
+
 
 const STATIC_FILES = [//statischen speicher gelagert
     '/',

@@ -4,10 +4,19 @@
 main {
   background-image: url("https://wallpaperaccess.com/full/3637360.jpg");
   background-size: 450px;
+  color: white;
 
 }
 .mdl-grid{
   text-align: center;
 }
+/*
+@media(max-width: 450px){
+  main{
+    color: blue;
+    position: center;
+  }
+
+}*/
 
 

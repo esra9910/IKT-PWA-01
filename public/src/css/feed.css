@@ -2,14 +2,19 @@
   z-index: 1001;
   position: fixed;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 56px);
   overflow-y: scroll;
   bottom: 0;
   top: 56px;
   background: whitesmoke;
   text-align: center;
   display: none;
+  /*visibility: hidden;*/
   /*background-image: url("https://wallpaperaccess.com/full/3637360.jpg");*/
+ /* transform: translateY(200vH);
+  transition: transform 0.3s;*/
+  /*transform: translateY(100vH); Kann zeit angeben wieviel sekunden es duaern kann
+  transition: transform 0.3s;*/
 }
 
 .main-image {
@@ -20,10 +25,6 @@
 
 
 .floating-button {
-  /*z-index: 1000;*/
-  /*position: fixed;*/
-  /*bottom: 0;*/
-  /*right: 0;*/
   padding: 30px;
   float:left;
 }
@@ -32,10 +33,59 @@
   display: block;
   margin: 10px auto;
 
-
 }
 
 .shared-moment-card.mdl-card {
   margin: 70px auto;
   /*float: left;*/
+}
+/*Bis hier klappt alles*/
+
+#create-post video, #create-post canvas {
+  width: 300px;
+  max-width: 100%;
+  display: none;
+  margin: auto;
+}
+#canvas{
+  margin-top: 2cm;
+}
+#create-post #pick-image {
+  display: none;
+}
+
+#create-post #capture-btn {
+  margin: 10px auto;
+}
+
+.mdl-spinner {
+  margin: auto;
+}
+@media (min-width: 600px) {
+  .shared-moment-card.mdl-card {
+    width: 60%;
+  }
+
+}
+/*Media Queries für Web-, Tablett- und Mobileansicht!*/
+@media (min-width: 1200px) {
+  .shared-moment-card.mdl-card {
+    width: 45%;
+  }
+}
+
+.shared-moment-card .mdl-card__title {
+  height: 250px;
+}
+
+@media (min-height: 600px) {
+  .shared-moment-card .mdl-card__title {
+    height: 300px;
+  }
+}
+
+@media (min-height: 1200px) {
+  .shared-moment-card .mdl-card__title {
+    height: 380px;
+  }
 }
