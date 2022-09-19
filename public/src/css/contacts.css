@@ -10,13 +10,13 @@ main {
 .mdl-grid{
   text-align: center;
 }
-/*
+
 @media(max-width: 450px){
   main{
     color: blue;
-    position: center;
+
   }
 
-}*/
+}
 
 

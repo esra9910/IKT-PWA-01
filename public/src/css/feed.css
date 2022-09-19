@@ -6,50 +6,20 @@
   overflow-y: scroll;
   bottom: 0;
   top: 56px;
-  background: whitesmoke;
+  background: white;
   text-align: center;
-  display: none;
-  /*visibility: hidden;*/
-  /*background-image: url("https://wallpaperaccess.com/full/3637360.jpg");*/
- /* transform: translateY(200vH);
-  transition: transform 0.3s;*/
-  /*transform: translateY(100vH); Kann zeit angeben wieviel sekunden es duaern kann
-  transition: transform 0.3s;*/
+  /* visibility: hidden; */
+  transform: translateY(100vH);
+  transition: transform 0.3s;
 }
-
-.main-image {
-  max-width: 100%;
-  margin: auto;
-  display: block;
-}
-
-
-.floating-button {
-  padding: 30px;
-  float:left;
-}
-
-.input-section {
-  display: block;
-  margin: 10px auto;
-
-}
-
-.shared-moment-card.mdl-card {
-  margin: 70px auto;
-  /*float: left;*/
-}
-/*Bis hier klappt alles*/
 
 #create-post video, #create-post canvas {
-  width: 300px;
+  width: 512px;
   max-width: 100%;
   display: none;
   margin: auto;
 }
-#canvas{
-  margin-top: 2cm;
-}
+
 #create-post #pick-image {
   display: none;
 }
@@ -61,13 +31,38 @@
 .mdl-spinner {
   margin: auto;
 }
+
+.main-image {
+  max-width: 100%;
+  margin: auto;
+  display: block;
+}
+
+.floating-button {
+  padding: 30px;
+  float:left;
+}
+
+.input-section {
+  display: block;
+  margin: 10px auto;
+}
+
+.shared-moment-card.mdl-card {
+  margin: 10px auto;
+}
+
+.whiteText {
+  color: white;
+}
+
+
 @media (min-width: 600px) {
   .shared-moment-card.mdl-card {
     width: 60%;
   }
-
 }
-/*Media Queries für Web-, Tablett- und Mobileansicht!*/
+
 @media (min-width: 1200px) {
   .shared-moment-card.mdl-card {
     width: 45%;

@@ -11,12 +11,27 @@
   background-color: darkorange;
 
 }
-
+.page-content{
+  margin-top: 2cm;
+}
 main {
   background-image: url("https://wallpaperaccess.com/full/3637360.jpg");
   position: absolute;
 }
 /*Neu hinzugefügt*/
+/*
+
+#navheader{
+  position: fixed;
+}
+*/
+
+@media (max-width: 480px) {
+  .main{
+    background-color: darkblue;
+  }
+
+}
 /*#navheader{
   /*position: fixed;
   margin-bottom: 2cm;

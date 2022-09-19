@@ -55,12 +55,12 @@
     </div>
     <!---Modal für hinzufügen eines neuen Buches--->
     <main class="mdl-layout__content mat-typography">
-      <div id="create-post">
-        <form>
+        <form id="formular">
+          <div id="create-post">
             <!---Abschnitt für Foto mithilfe des Canvas-Tagsum mit der Kamera Bilder aufzunehmen, die mit dem <button> gespeichert wird--->
             <video id="player" autoplay></video>
             <canvas id="canvas" width="320px" height="240px"></canvas>
-            <button class="mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-button&#45;&#45;colored" id="capture-btn">Foto</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="capture-btn">Foto</button>
             <div id="pick-image">
               <h6>Bild auswählen</h6>
               <input type="file" accept="image/*" id="image-picker">
@@ -79,16 +79,15 @@
             </div>
             <br>
             <!--eine weitere Eingabesection für die Location hinzu mit einem Button und einem spinner, der anzeigen soll, dass etwas passiert.-->
-            <!--<div class="input-section">
+            <div class="input-section">
               <button class="mdl-button mdl-js-button mdl-button--colored" type="button" id="location-btn">Location</button>
               <div class="mdl-spinner mdl-js-spinner is-active" id="location-loader"></div>
             </div>
-            -->
             <div>
               <!--Javascript Funktion wird aufgerufen, um dann die Card zu erstellen, dann wird sie bei shared moments sichtbar--->
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--accent"
-                      type="submit" id="post-btn">Speichern
-              </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--accent"
+                        type="submit" id="post-btn">Speichern
+                </button>
             </div>
             <br>
             <div>
@@ -97,8 +96,9 @@
                 <i class="material-icons">close</i>
               </button>
             </div>
+          </div>
         </form>
-      </div>
+
       <!--SRCSET damit die Bilder responsive werden
       <img srcset="src/images/Book.jpeg 100w"
        src="src/images/Book.jpeg" alt="HTW Wilhelminenhof" class="main-image" >-->
