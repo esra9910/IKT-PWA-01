@@ -12,6 +12,9 @@
  *      - Links: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation
  *              - https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API?retiredLocale=de
  *              - https://developers.google.com/maps/documentation/geolocation/overview
+ *              - https://nominatim.org und https://nominatim.org/release-docs/develop/api/Overview/
+ *
+ *       -
  * 4- IndexDB
  */
 //Alle Input felder und Button der Seite werden initialisert
@@ -280,15 +283,37 @@ locationButton.addEventListener('click', event => {
     navigator.geolocation.getCurrentPosition( position => { //Callback -Funktion
         locationButton.style.display = 'inline';//Button wird sichtbar
         locationLoader.style.display = 'none';//Loader ist unsichtbar
+
         fetchedLocation = { latitude: position.coords.latitude, longitude: position.coords.longitude };
         console.log('current position: ', fetchedLocation);
-        locationInput.value = 'In Berlin';
+
+        let nominatimURL = 'https://nominatim.openstreetmap.org/reverse';
+        nominatimURL += '?format=jsonv2';   // format=[xml|json|jsonv2|geojson|geocodejson]
+        nominatimURL += '&lat=' + fetchedLocation.latitude;
+        nominatimURL += '&lon=' + fetchedLocation.longitude;
+
+        fetch(nominatimURL)
+            .then((res) => {
+                console.log('nominatim res ...', res);
+                return res.json();
+            })
+            .then((data) => {
+                console.log('nominatim res.json() ...', data);
+                locationInput.value = data.display_name;
+            })
+            .catch( (err) => {
+                console.error('err', err)
+                locationInput.value = 'In Berlin';
+            });
+
         document.querySelector('#manual-location').classList.add('is-focused');
     }, err => {
         console.log(err);
         locationButton.style.display = 'inline';
         locationLoader.style.display = 'none';
         alert('Couldn\'t fetch location, please enter manually!');
+
+
         fetchedLocation = null;//dritte Parameter ist ein JavaScript-Objekt mit options. Wir wählen hier nur eine einzige Option,
     }, { timeout: 5000}); // nämlich wie lange nach der aktuellen Position gesucht werden soll. In der Einstellung erfolgt der timeout nach 5 sek.
 });
