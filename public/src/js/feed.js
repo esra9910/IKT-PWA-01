@@ -2,6 +2,17 @@
  * Daten werden aus der DB angezeigt
  * KARTEN werden erstellt
  * - Mit JQery werden die Daten zum Backend geschickt
+ *
+ *
+ * Javascript- Datei
+ * 1- hinzufügen von Karten und Daten werden in die DB verschikt und im Frontend angezeigt
+ * 1.1-  Form wird hier angezeigt Create-post und geöffnet
+ * 2- Kamera EInstellung von hier + ImagePicker
+ * 3- Geolocation
+ *      - Links: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation
+ *              - https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API?retiredLocale=de
+ *              - https://developers.google.com/maps/documentation/geolocation/overview
+ * 4- IndexDB
  */
 //Alle Input felder und Button der Seite werden initialisert
 let shareImageButton = document.querySelector('#share-image-button');
@@ -17,11 +28,11 @@ let locationInput = document.querySelector('#location');
 let contentInput = document.querySelector('#content');
 
 //Variable für Kamerazugriff, nehmen die Id der Elemente
-let videoPlayer = document.querySelector('#player');
-let canvasElement = document.querySelector('#canvas');
-let captureButton = document.querySelector('#capture-btn');
-let imagePicker = document.querySelector('#image-picker');
-let imagePickerArea = document.querySelector('#pick-image');
+let videoPlayer = document.querySelector('#player');//Video zum Bild aufnehmen
+let canvasElement = document.querySelector('#canvas');// Bild
+let captureButton = document.querySelector('#capture-btn');//'Foto'-Button, um Bild zu festzuhalten
+let imagePicker = document.querySelector('#image-picker');//Selector Bilder hinzufügen
+let imagePickerArea = document.querySelector('#pick-image');//Button
 
 //Leere Variablen die dannach befüllt werden
 let file = null;
@@ -29,6 +40,10 @@ let titleValue = '';
 let locationValue = '';
 let contentValue = '';
 let imageURI = '';
+//Variable für geolocation
+let locationButton = document.querySelector('#location-btn');
+let locationLoader = document.querySelector('#location-loader');
+let fetchedLocation;
 
 //Gucken ob Mediadevices gibts
 //Links:
@@ -70,13 +85,16 @@ function openCreatePostModal() {
     ////Habe ich entnommen wegen Probleme: Timeset setzen wir da die kamera die ganze Zeit läuft wir wollen das nicht deswegen setzten wir eine Zeit auf beim Öffnen und schließen
     createPostArea.style.transform = 'translateY(0)';
     initializeMedia();
+    initializeLocation();
 }
 
 function closeCreatePostModal() {
-    createPostArea.style.transform = 'translateY(100vH)';
+    createPostArea.style.transform = 'translateY(100vH)'; //Zugriff zur Kamera zu bekommen
     imagePickerArea.style.display = 'none';//versteckt element
-    videoPlayer.style.display = 'none';
-    canvasElement.style.display = 'none';
+    videoPlayer.style.display = 'none'; //versteckt videoplayer
+    canvasElement.style.display = 'none';//versteckt canvas
+    locationButton.style.display = 'inline';
+    locationLoader.style.display = 'none';
 }
 
 shareImageButton.addEventListener('click', openCreatePostModal);//eventlistener bei Click und bei Funktionsaufruf
@@ -95,10 +113,11 @@ function createCard(card) {
     let cardTitle = document.createElement('div');
     cardTitle.className = 'mdl-card__title';
     let image = new Image();//neues Image aus der DB
+   // image.style.height = '200px'//hinzugefügt
     image.src = card.image_id;//als Image id gespeichert
     cardTitle.style.backgroundImage = 'url('+ image.src +')';//Bild auf der Karte hinzugefügt und angezeziegt
     cardTitle.style.backgroundSize = 'cover';
-    cardTitle.style.height = '180px';
+    //cardTitle.style.height = '300px';
     cardWrapper.appendChild(cardTitle);
     //let cardTitleTextElement = document.createElement('h5');
     //cardTitleTextElement.className = 'mdl-card__title-text';
@@ -120,7 +139,7 @@ function createCard(card) {
     cardContent.style.textAlign='center';
     //Hinzufügen zur Karte
     cardWrapper.appendChild(cardSupportingText);
-    // cardWrapper.appendChild(cardContent);
+    cardWrapper.appendChild(cardContent);
     cardWrapper.appendChild(cardLocationText);
     componentHandler.upgradeElement(cardWrapper);
     sharedMomentsArea.appendChild(cardWrapper);
@@ -160,8 +179,9 @@ function updateUI(data) {
     }
 
 }
-//Funktion wird dann aufgerufen schickt Daten zum Backend
+//Funktion wird dann aufgerufen schickt Daten zum Backend. Daten werden gepostet
 function sendDataToBackend() {
+    //neue FormData wird befüllt mit den geschrieben Ergebnissen
     const formData = new FormData();
     formData.append('title', titleValue);
     formData.append('content', contentValue);
@@ -192,7 +212,7 @@ function sendDataToBackend() {
 //reagieren des Submit Button des Speicher-Buttons
 form.addEventListener('submit', event => {
     event.preventDefault(); // nicht absenden und neu laden
-
+    //Meldung wird angezeigt
     if (file == null) {
         alert('Erst Foto aufnehmen!')
         return;
@@ -205,9 +225,11 @@ form.addEventListener('submit', event => {
 
     closeCreatePostModal();
 
+    //Werte werden befüllt
     titleValue = titleInput.value;
     locationValue = locationInput.value;
     contentValue = contentInput.value;
+    //anzeigen in der Konsole der gegebene Werte
     console.log('titleInput', titleValue)
     console.log('contentInput', contentValue)
     console.log('locationInput', locationValue)
@@ -215,7 +237,7 @@ form.addEventListener('submit', event => {
 
     sendDataToBackend();
 });
-
+//
 captureButton.addEventListener('click', event => {
     event.preventDefault(); // nicht absenden und neu laden
     canvasElement.style.display = 'block';
@@ -243,3 +265,36 @@ captureButton.addEventListener('click', event => {
 imagePicker.addEventListener('change', event => {
     file = event.target.files[0];
 });
+
+//Behandlung des click-Ereignisses für den Location-Button
+//noch, wie für die Kamera, eine initializeLocation()-Funktion,
+// in der geprüft wird, ob die Geolocation-API überhaupt im Browser verfügbar ist
+locationButton.addEventListener('click', event => {
+    if(!('geolocation' in navigator)) {//Falls nicht dann
+        return;
+    }
+//Wenn auf den Button geklickt wurde, setzen wir den Button selbst auf unsichtbar und den Spinner (Loader) auf sichtbar
+    locationButton.style.display = 'none';//sind grade versteckt
+    locationLoader.style.display = 'block';//sichtbar
+    //eigentlich Zugriff auf Standort über getCurrentPosition()----->>https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPosition & https://developer.mozilla.org/en-US/docs/Web/API/GeolocationCoordinates
+    navigator.geolocation.getCurrentPosition( position => { //Callback -Funktion
+        locationButton.style.display = 'inline';//Button wird sichtbar
+        locationLoader.style.display = 'none';//Loader ist unsichtbar
+        fetchedLocation = { latitude: position.coords.latitude, longitude: position.coords.longitude };
+        console.log('current position: ', fetchedLocation);
+        locationInput.value = 'In Berlin';
+        document.querySelector('#manual-location').classList.add('is-focused');
+    }, err => {
+        console.log(err);
+        locationButton.style.display = 'inline';
+        locationLoader.style.display = 'none';
+        alert('Couldn\'t fetch location, please enter manually!');
+        fetchedLocation = null;//dritte Parameter ist ein JavaScript-Objekt mit options. Wir wählen hier nur eine einzige Option,
+    }, { timeout: 5000}); // nämlich wie lange nach der aktuellen Position gesucht werden soll. In der Einstellung erfolgt der timeout nach 5 sek.
+});
+// geprüft, ob der Browser die Geolocation-API unterstützt
+function initializeLocation() {
+    if(!('geolocation' in navigator)) {//wenn nicht wird Location Button versteckt
+        locationButton.style.display = 'none';
+    }
+}

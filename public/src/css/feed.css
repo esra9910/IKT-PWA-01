@@ -38,11 +38,6 @@
   display: block;
 }
 
-.floating-button {
-  padding: 30px;
-  float:left;
-}
-
 .input-section {
   display: block;
   margin: 10px auto;
@@ -55,7 +50,10 @@
 .whiteText {
   color: white;
 }
-
+/*Geolocation wird unsichtbar gemacht als erstes*/
+#create-post #pick-image, #create-post #location-loader {
+  display: none;
+}
 
 @media (min-width: 600px) {
   .shared-moment-card.mdl-card {
