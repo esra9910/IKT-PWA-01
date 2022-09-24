@@ -11,9 +11,16 @@
   background-color: darkorange;
 
 }
-.page-content{
-  margin-top: 2cm;
+
+.floating-button {/*div zentrieren des Floating Buttons  */
+  padding: 15px;
+  text-align: center;
+  float: none;
+
 }
+/*.page-content{*/
+/*  margin-top: 2cm;*/
+/*}*/
 main {
   background-image: url("https://wallpaperaccess.com/full/3637360.jpg");
   position: absolute;
@@ -21,10 +28,6 @@ main {
 /*Neu hinzugefügt*/
 /*
 
-#navheader{
-  position: fixed;
-}
-*/
 
 .floating-button {
   padding: 30px;
@@ -33,35 +36,46 @@ main {
 #shared-moments{
   float: left;
   margin: auto;
-  display: -webkit-flex;
 }
-.mdl-card__title{
-  height: 50px;
+/*in Mobiler Ansicht S ,M und L*/
+/*@media (min-device-width: 320px) and (max-device-width: 425px) {
 
-}
-@media (max-width: 480px) {
-  .main{
-    background-color: darkblue;
+  .floating-button {!*zentrieren des Floating Buttons  *!
+    padding: 30px;
+    text-align: center;
+    float: none;
+  }
+  #shared-moments{
+    flex-direction: row;
+    padding: 30px;
+    float: none;
+    margin:20px;
+
   }
 
-}
-/*#navheader{
-  /*position: fixed;
-  margin-bottom: 2cm;
-}
-/*.page-content{
-    margin-top: 2cm;
-}
+
+}*/
+
+/*Mobile Ansicht*/
+/*
+@media (min-width: 426px) {
+  .shared-moment-card.mdl-card {
+    width: 60%;
+    float: left;
+    margin:10px;
+  }
+  #shared-moments{
+    flex-direction: column;
+    padding: 30px;
+    float: none;
+    margin:20px;
+
+  }
+  .shared-moment-card .mdl-card__title {
+    height: 250px;
+  }
+
+}*/
 
 
-!*Bis hier ist funktioniert alles*!
 
-!*Media Querys hinzufügen für App und Tablett Ansicht*!
-@media (max-width: 480px) and (min-width: 320px){
-    .main{
-        background-color: darkblue;
-    }
-
-}
-
-*/

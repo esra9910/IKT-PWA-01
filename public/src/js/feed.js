@@ -48,6 +48,9 @@ let locationButton = document.querySelector('#location-btn');
 let locationLoader = document.querySelector('#location-loader');
 let fetchedLocation;
 
+//Variable für Delete-Button
+
+
 //Gucken ob Mediadevices gibts
 //Links:
 //https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices
@@ -107,39 +110,43 @@ closeCreatePostModalButton.addEventListener('click', closeCreatePostModal);
 function createCard(card) {
     let cardWrapper = document.createElement('div');
     cardWrapper.className = 'shared-moment-card mdl-card mdl-shadow--2dp';
-    cardWrapper.style.width='200px';
+    cardWrapper.style.width='200px'
     cardWrapper.style.borderRadius='10px';
     cardWrapper.style.borderColor='white';
     cardWrapper.style.borderStyle='solid';
-    cardWrapper.style.float='left';
-    cardWrapper.style.margin='10px';
+   // cardWrapper.style.float='left';
+    //cardWrapper.style.margin='10px';
     let cardTitle = document.createElement('div');
     cardTitle.className = 'mdl-card__title';
     let image = new Image();//neues Image aus der DB
    // image.style.height = '200px'//hinzugefügt
     image.src = card.image_id;//als Image id gespeichert
+    //image.style.height= '200px';
     cardTitle.style.backgroundImage = 'url('+ image.src +')';//Bild auf der Karte hinzugefügt und angezeziegt
     cardTitle.style.backgroundSize = 'cover';
-    //cardTitle.style.height = '300px';
     cardWrapper.appendChild(cardTitle);
-    //let cardTitleTextElement = document.createElement('h5');
-    //cardTitleTextElement.className = 'mdl-card__title-text';
-    // cardTitle.appendChild(cardTitleTextElement);
+
     //Titel des Buches
     let cardSupportingText = document.createElement('div');
     cardSupportingText.className = 'mdl-card__supporting-text';
     cardSupportingText.textContent= card.title;
     cardSupportingText.style.textAlign = 'center';
+    cardSupportingText.style.fontSize ='15px';
+    cardSupportingText.style.fontWeight= 'bold';
+    cardSupportingText.style.fontFamily= 'cursiv';
     //Location
     let cardLocationText = document.createElement('h9');
     cardLocationText.className = 'mdl-card__supporting-text';
     cardLocationText.textContent= card.location;
     cardLocationText.style.textAlign= 'center';
-    //Content
+    cardLocationText.style.fontSize= '10px';
+    //Content/Inhalt des Buches
     let cardContent = document.createElement('div');
     cardContent.className = 'mdl-card__supporting-text';
     cardContent.textContent=card.content;
+    cardContent.style.fontSize='10px';
     cardContent.style.textAlign='center';
+
     //Hinzufügen zur Karte
     cardWrapper.appendChild(cardSupportingText);
     cardWrapper.appendChild(cardContent);

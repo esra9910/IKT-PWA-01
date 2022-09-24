@@ -1,4 +1,4 @@
-#create-post {
+#create-post {/*Seite von CreateKarte*/
   z-index: 1001;
   position: fixed;
   width: 100%;
@@ -45,6 +45,11 @@
 
 .shared-moment-card.mdl-card {
   margin: 10px auto;
+
+}
+.shared-moment-card .mdl-card__title {
+  height: 300px;
+  border-radius: 10px;
 }
 
 .whiteText {
@@ -55,30 +60,91 @@
   display: none;
 }
 
-@media (min-width: 600px) {
+
+
+/*Tabllets und Desktop variante weil es ab 700px anfängt Desktop ist 1025px */
+@media (min-width: 700px) {
   .shared-moment-card.mdl-card {
-    width: 60%;
+    /*width: 45%;
+    margin: 10px;*/
+
   }
 }
 
-@media (min-width: 1200px) {
-  .shared-moment-card.mdl-card {
-    width: 45%;
-  }
-}
 
-.shared-moment-card .mdl-card__title {
-  height: 250px;
-}
-
+/*Tablet Ansicht*/
 @media (min-height: 600px) {
   .shared-moment-card .mdl-card__title {
     height: 300px;
+
+  }
+  .mdl-card__supporting-text{
+    font-weight: lighter;
+    font-size: small;
   }
 }
+/*
+@media (min-height: 1200px) {
+  .shared-moment-card .mdl-card__title {
+    height: 380px;
+  }
+}*/
+/*in Mobiler Ansicht S ,M und L*/
+@media (min-device-width: 320px) and (max-device-width: 425px) {
+
+  /*.floating-button {!*zentrieren des Floating Buttons  *!
+    padding: 30px;
+    text-align: center;
+    float: none;
+  }*/
+  #shared-moments{
+    flex-direction: row;
+    padding: 30px;
+    float: none;
+    margin:20px;
+
+  }
+  /*.shared-moment-card .mdl-card__title {
+    height: 300px;
+  }*/
+  /*!*Bilder und Titel*!
+  .shared-moment-card .mdl-card__title {
+    height: 300px;
+  }
+  .mdl-card__supporting-text{
+    font-size: x-small;
+  }*/
+
+
+}
+
+/*Tablett and PC Ansicht*/
+@media (min-width: 426px) {
+  .shared-moment-card.mdl-card {
+    float: left;
+    margin:10px;
+  }
+  #shared-moments{
+   /* flex-direction: column;*/
+    padding: 30px;
+    float: none;
+    margin:20px;
+
+    grid-auto-flow: column;
+    display: grid;
+
+  }
+  .shared-moment-card{
+    width: 50%;
+  }
+
+
+}
+/*
 
 @media (min-height: 1200px) {
   .shared-moment-card .mdl-card__title {
     height: 380px;
   }
 }
+*/
