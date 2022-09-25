@@ -3,9 +3,25 @@
 
 
 
+****
+**Über die App**
+
+Bei meiner App handelt es sich über einen Bücher-Blog, in der man Lieblingsbücher posten kann. Man hat die Möglichkeit hier über den Inhalt des Buches zu erzählen und Fotos hinzuzufügen bzw. aufzunehmen auch den Standort teilen.
+Zudem kann man die App herunterladen und offline nutzen.  
 
 
+****
 
+Technisches zur der App:
+Datenbank: MongoDB
+Backend: Node.js
+Frontend: HTML,CSS und JS
+
+Vefügt über eine IndexDB,installierbar, offline anwendbar und Kamerafunktion und Geolocation vorhanden.
+
+****
+
+**App**
 
 
 

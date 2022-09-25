@@ -13,7 +13,7 @@ main {
 
 @media(max-width: 450px){
   main{
-    color: blue;
+    font-size: medium;
 
   }
 

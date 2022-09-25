@@ -42,7 +42,9 @@
   display: block;
   margin: 10px auto;
 }
-
+.mdl-textfield__label{
+  font-size: small;
+}
 .shared-moment-card.mdl-card {
   margin: 10px auto;
 
@@ -118,8 +120,8 @@
 
 }
 
-/*Tablett and PC Ansicht*/
-@media (min-width: 426px) {
+/*Tablett Ansicht*/
+@media (min-width: 426px) and (max-width: 770px){
   .shared-moment-card.mdl-card {
     float: left;
     margin:10px;
@@ -130,16 +132,32 @@
     float: none;
     margin:20px;
 
-    grid-auto-flow: column;
+    /*grid-auto-flow: column;*/
     display: grid;
-
+    grid-gap: 2px;
+    grid-template-columns: repeat(3, 1fr);/*Default placement Hier Link: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Auto-placement_in_CSS_Grid_Layout*/
+    overflow-x: scroll;/*damit auf beiden seiten scrollbar ist*/
+    overflow-y: scroll;
   }
   .shared-moment-card{
     width: 50%;
+
   }
 
 
 }
+/*PC Ansicht*/
+@media  (min-width: 770px) and (max-width: 1600px){
+  #shared-moments{
+    margin: 20px;
+    grid-auto-flow: column;
+    display: grid;
+    grid-gap: 10px;
+    overflow-x: scroll;/*damit auf beiden seiten scrollbar ist*/
+    overflow-y: scroll;
+  }
+}
+
 /*
 
 @media (min-height: 1200px) {
