@@ -121,9 +121,8 @@ function createCard(card) {
     let image = new Image();//neues Image aus der DB
    // image.style.height = '200px'//hinzugefügt
     image.src = card.image_id;//als Image id gespeichert
-    //image.style.height= '200px';
     cardTitle.style.backgroundImage = 'url('+ image.src +')';//Bild auf der Karte hinzugefügt und angezeziegt
-    cardTitle.style.backgroundSize = 'cover';
+    /*cardTitle.style.backgroundSize = 'cover';*/
     cardWrapper.appendChild(cardTitle);
 
     //Titel des Buches
