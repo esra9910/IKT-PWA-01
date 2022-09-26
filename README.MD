@@ -59,7 +59,7 @@ Vefügt über eine IndexDB,ist installierbar und offline anwendbar und verfügt 
 
 ![img_8.png](img_8.png)
 
-![img_9.png](img_9.png)
+
 
 
 
