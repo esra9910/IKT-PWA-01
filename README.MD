@@ -24,32 +24,34 @@ Vefügt über eine IndexDB,ist installierbar und offline anwendbar und verfügt 
 
 ****
 
-#App
+**Webanwendung**
 
-####Startseite
+**Startseite**
 
-[img.png](img.png)
+![img.png](img.png)
 
-####Kontakt
+**Kontakt**
+
 ![img_1.png](img_1.png)
 
 ####Bücher hinzufügen - Kamera und Geolocation funktioniert
 
 ![img_3.png](img_3.png)
 
-###ist installierbar 
+**ist installierbar **
 
 ![img_2.png](img_2.png)
 
-###indexDB funktioniert
+**indexDB funktioniert**
 
 ![img_4.png](img_4.png)
 
-###enthält Cache
+**enthält Cache**
+
 ![img_5.png](img_5.png)
 
 
-##Mobile Funktion
+**Mobile Funktion**
 
 ![img_6.png](img_6.png)
 
