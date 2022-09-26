@@ -6,29 +6,62 @@
 ****
 **Über die App**
 
-Bei meiner App handelt es sich über einen Bücher-Blog, in der man Lieblingsbücher posten kann. Man hat die Möglichkeit hier über den Inhalt des Buches zu erzählen und Fotos hinzuzufügen bzw. aufzunehmen auch den Standort teilen.
-Zudem kann man die App herunterladen und offline nutzen.  
+Bei meiner App handelt es sich über einen Bücher-Blog, in der man Lieblingsbücher posten kann. Man hat die Möglichkeit über den Inhalt des Buches zu erzählen und Fotos hinzuzufügen bzw. aufzunehmen.Zudem hat man die Möglichkeit seinen Standort teilen .
+Anschließend kann man die App herunterladen und offline nutzen.  
 
 
 ****
 
 Technisches zur der App:
+
 Datenbank: MongoDB
+
 Backend: Node.js
+
 Frontend: HTML,CSS und JS
 
-Vefügt über eine IndexDB,installierbar, offline anwendbar und Kamerafunktion und Geolocation vorhanden.
+Vefügt über eine IndexDB,ist installierbar und offline anwendbar und verfügt über Kamerafunktion und Geolocation.
 
 ****
 
-**App**
+#App
+
+####Startseite
+
+![img.png](img.png)
+
+####Kontakt
+![img_1.png](img_1.png)
+
+####Bücher hinzufügen - Kamera und Geolocation funktioniert
+
+![img_3.png](img_3.png)
+
+###ist installierbar 
+
+![img_2.png](img_2.png)
+
+###indexDB funktioniert
+
+![img_4.png](img_4.png)
+
+###enthält Cache
+![img_5.png](img_5.png)
+
+
+##Mobile Funktion
+
+![img_6.png](img_6.png)
+
+![img_7.png](img_7.png)
+
+![img_8.png](img_8.png)
+
+![img_9.png](img_9.png)
 
 
 
-
-
-
-
+****
 
 
 

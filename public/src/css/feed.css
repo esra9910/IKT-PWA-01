@@ -74,13 +74,15 @@
 /*in Mobiler Ansicht S ,M und L*/
 @media (min-device-width: 320px) and (max-device-width: 425px) {
 
-
   #shared-moments{
     flex-direction: row;
     padding: 30px;
     float: none;
     margin:20px;
 
+  }
+  #canvas{
+    height: 100px;
   }
   /*.shared-moment-card .mdl-card__title {
     height: 300px;
@@ -95,6 +97,8 @@
 
 
 }
+
+
 /*falls es kleiner ist als Tablett ansicht dann mach die Karten in 2 reihen*/
 @media(min-width: 426px) and (max-width:580px) {
 
